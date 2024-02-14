@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
   margin: 0;
@@ -10,6 +11,7 @@
   --color-primary: #1F7EA1;
   --text-color1: #000000;
   --text-color2: #ADB5BD;
+  --text-color3: #F1F1F1;
 }
 
 body {
@@ -111,5 +113,240 @@ body {
 }
 
 .login-container .login-layout button:hover {
+  opacity: 80%;
+}
+
+.home-container {
+  display: flex;
+  gap: 20px;
+}
+
+.sidebar {
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px 40px 20px 10px;
+  height: 650px;
+}
+
+.sidebar .side-links-container {
+  margin: 10px;
+}
+
+.sidebar .side-links-container ul li {
+  list-style: none;
+  width: 100%;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 6px;
+}
+
+.sidebar .side-links-container ul li:hover {
+  background-color: var(--text-color3);
+}
+
+.selected {
+  background-color: var(--text-color3);
+}
+
+.sidebar .side-links-container ul li span {
+  margin-left: 20px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left
+}
+
+.sidebar .sidebar-profile {
+  border-top: 1px solid var(--text-color2);
+  padding-top: 50px;
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+
+.sidebar .side-links-container .profile {
+  border-radius: 50%;
+}
+
+.sidebar .sidebar-profile div {
+  margin-right: 30px;
+}
+
+.sidebar .sidebar-profile div h3 {
+  font-family: 'Open Sans';
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.sidebar .sidebar-profile div p {
+  font-family: 'Open Sans';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #868E96;
+}
+
+.dashboard {
+  margin: 20px;
+}
+
+.dashboard h1 {
+  font-family: Inter;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 50px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.dashboard p {
+  text-align: center;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.dashboard p span {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+  margin: 5px;
+}
+
+.cards {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0px;
+}
+
+.cards .card {
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.cards .card div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cards .card div .card-text {
+  display: flex;
+}
+
+.cards .card div .card-text div {
+  display: block;
+  margin: 0px 20px;
+}
+
+.cards .card .text {
+  color: var(--color-primary);
+}
+
+.cards .card .text:hover {
+  opacity: 80%;
+}
+
+.search-page {
+  margin: 20px;
+  width: 150%;
+}
+
+.search-page h1 {
+  font-family: Inter;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 50px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.search-page input {
+  width: 100%;
+  border-radius: 7px;
+  padding: 10px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+  background: var(--text-color3);
+  border: none;
+  color: #1C1C1C;
+  margin-bottom: 20px;
+}
+
+.search-page span {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #A1A1A1;
+}
+
+.search-page .vehicles-container {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0px;
+  background: #fff;
+  padding: 20px;
+}
+
+.search-page .vehicles-container p {
+  color: #000000;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.search-page .vehicles-container p span {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #000000;
+}
+
+.search-page .vehicles-container a {
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.search-page .vehicles-container a:hover {
   opacity: 80%;
 }
