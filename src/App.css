@@ -128,6 +128,8 @@ body {
 }
 
 .sidebar {
+  position: fixed;
+  width: 300px;
   background: #fff;
   display: flex;
   justify-content: space-between;
@@ -135,6 +137,12 @@ body {
   flex-direction: column;
   padding: 20px 40px 20px 10px;
   height: 650px;
+}
+
+.sidebar-placeholder {
+  width: 300px; /* Same width as the fixed element */
+  height: 650px; /* Same height as the fixed element */
+  visibility: hidden; /* Hide the placeholder */
 }
 
 .sidebar .side-links-container {
