@@ -15,8 +15,12 @@
     "@mui/material": "^5.15.15",
     "@mui/styled-engine-sc": "^6.0.0-alpha.18",
     "@mui/x-date-pickers": "^7.2.0",
+    "@radix-ui/react-slot": "^1.0.2",
+    "chart.js": "^4.4.2",
+    "class-variance-authority": "^0.7.0",
     "dayjs": "^1.11.10",
     "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.0",
     "styled-components": "^6.1.8"

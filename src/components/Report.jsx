@@ -88,6 +88,22 @@ const Report = () => {
       charge: "$25",
       paid: "No",
     },
+    {
+      plate: "PQR678",
+      owner: "Elizabeth Brown",
+      licenseCode: "ZAB1234",
+      violation: "Failure to yield",
+      charge: "$75",
+      paid: "No",
+    },
+    {
+      plate: "STU901",
+      owner: "Robert Miller",
+      licenseCode: "CDE5678",
+      violation: "Speeding",
+      charge: "$100",
+      paid: "No",
+    },
   ];
 
   return (
@@ -107,6 +123,15 @@ const Report = () => {
           </div>
         </div>
         <Table columns={columns} data={data} />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "end",
+            marginTop: "20px",
+          }}
+        >
+          <button>Download</button>
+        </div>
       </div>
     </LocalizationProvider>
   );
