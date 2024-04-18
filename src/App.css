@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 * {
   margin: 0;
@@ -8,14 +8,14 @@
 }
 
 :root {
-  --color-primary: #1F7EA1;
+  --color-primary: #1f7ea1;
   --text-color1: #000000;
-  --text-color2: #ADB5BD;
-  --text-color3: #F1F1F1;
+  --text-color2: #adb5bd;
+  --text-color3: #f1f1f1;
 }
 
 body {
-  background: #F9FAFB;
+  background: #f9fafb;
 }
 
 .login-container {
@@ -32,11 +32,13 @@ body {
 }
 
 .login-container .login-layout {
+  margin-top: 5vh;
   display: flex;
+  gap: 20px;
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  box-shadow: 0px 1px 2px 0px #0000001A;
+  box-shadow: 0px 1px 2px 0px #0000001a;
   background: #fff;
   padding: 30px;
 }
@@ -66,6 +68,10 @@ body {
   letter-spacing: 0em;
   text-align: left;
   margin-bottom: 5px;
+}
+
+.login-container .login-layout form label:nth-child(3) {
+  margin-top: 2vh;
 }
 
 .login-container .login-layout form input {
@@ -160,7 +166,7 @@ body {
   font-weight: 400;
   line-height: 25px;
   letter-spacing: 0em;
-  text-align: left
+  text-align: left;
 }
 
 .sidebar .sidebar-profile {
@@ -180,7 +186,7 @@ body {
 }
 
 .sidebar .sidebar-profile div h3 {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-size: 16px;
   font-weight: 600;
   line-height: 22px;
@@ -189,13 +195,13 @@ body {
 }
 
 .sidebar .sidebar-profile div p {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   font-size: 14px;
   font-weight: 400;
   line-height: 19px;
   letter-spacing: 0em;
   text-align: left;
-  color: #868E96;
+  color: #868e96;
 }
 
 .dashboard {
@@ -294,7 +300,7 @@ body {
   text-align: left;
   background: var(--text-color3);
   border: none;
-  color: #1C1C1C;
+  color: #1c1c1c;
   margin-bottom: 20px;
 }
 
@@ -305,7 +311,7 @@ body {
   line-height: 25px;
   letter-spacing: 0em;
   text-align: left;
-  color: #A1A1A1;
+  color: #a1a1a1;
 }
 
 .search-page .vehicles-container {
