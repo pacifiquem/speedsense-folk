@@ -11,7 +11,7 @@ const dataAccidentsByHour = {
       label: "Accidents By Hour",
       data: Array.from({ length: 24 }, () => Math.floor(Math.random() * 10)),
       borderColor: "rgb(31,126,161)",
-      backgroundColor: "rgba(31,126,161,0.2)",
+      backgroundColor: "rgb(78,203,113)",
     },
   ],
 };
@@ -28,7 +28,7 @@ const dataAccidentsByLocation = {
     {
       label: "Accidents By Location",
       data: [25, 30, 20, 35, 15],
-      backgroundColor: "rgb(235,251,238)",
+      backgroundColor: "rgb(78,203,113)",
     },
   ],
 };
