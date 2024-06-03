@@ -167,6 +167,15 @@ body {
   background-color: var(--text-color3);
 }
 
+.sidebar .side-links-container ul {
+  padding: 10px;
+  margin-top: 50px;
+}
+
+.sidebar .side-links-container ul:hover {
+  cursor: pointer;
+}
+
 .sidebar .side-links-container ul li span {
   margin-left: 20px;
   font-family: Inter;
@@ -183,6 +192,8 @@ body {
   width: 100%;
   display: flex;
   gap: 10px;
+  margin-top: 250px;
+  background-color: white;
 }
 
 .sidebar .side-links-container .profile {
@@ -252,7 +263,7 @@ body {
 
 .cards {
   display: flex;
-  gap: 20px;
+  gap: 80px;
   margin: 20px 0px;
 }
 
@@ -438,4 +449,15 @@ button {
   font-family: "Inter", sans-serif;
   font-size: 16px;
   font-weight: bold;
+}
+
+.roads {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 600px;
+}
+
+.roads button {
+  margin-top: 40px;
 }

@@ -104,6 +104,14 @@ const Report = () => {
       charge: "$100",
       paid: "No",
     },
+    {
+      plate: "RRRRR",
+      owner: "MURANGWA Pacifique",
+      licenseCode: "KKKKKKK",
+      violation: "Speeding",
+      charge: "$10",
+      paid: "No",
+    },
   ];
 
   return (

@@ -56,14 +56,14 @@ const dataOverspeedingByLocation = {
   ],
 };
 
-const columns = [
+export const columns = [
   { key: "locationName", title: "Location Name" },
   { key: "locationId", title: "Location ID" },
   { key: "totalOverspeedingCases", title: "Total Overspeeding Cases" },
   { key: "totalAccidents", title: "Total Accidents" },
 ];
 
-const data = [
+export const data = [
   {
     locationName: "Downtown",
     locationId: "DT001",

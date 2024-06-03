@@ -65,8 +65,8 @@ const Sidebar = ({ selectedComponent, onSelectComponent }) => {
         <div className="sidebar-profile">
           <img src={avatar} className="profile" alt="avatar" />
           <div>
-            <h3>Amy Horsefighter</h3>
-            <p>ahorsefighter@gmail.com</p>
+            <h3>RNP Admin</h3>
+            <p>admin@rnp.gov.rw</p>
           </div>
           <img src={right} alt="icon" />
         </div>
