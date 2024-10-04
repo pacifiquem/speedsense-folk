@@ -2,10 +2,8 @@ import React from 'react'
 
 const Live = () => {
   return (
-    <div>
-      Live
-    </div>
+    <div>Live</div>
   )
 }
 
-export default Live
+export default Live;

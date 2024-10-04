@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import {
-  Sidebar,
   Dashboard,
-  Search,
-  Report,
   Live,
-  Statistics,
-  GeoFence,
-} from "../components";
+  Geofence,
+  Devices,
+  Assistant,
+} from "../components/app";
+import Sidebar from "../components/ui/Sidebar";
+import { GeofenceProvider } from "../contexts/GeofenceContext";
 
-const Home = () => {
+const Application = () => {
   const [selectedComponent, setSelectedComponent] = useState("dashboard");
 
   const handleComponentChange = (component) => {
@@ -26,15 +26,18 @@ const Home = () => {
       </div>
       <div className="component">
         {selectedComponent === "dashboard" && <Dashboard />}
-        {selectedComponent === "search" && <Search />}
-        {selectedComponent === "report" && <Report />}
         {selectedComponent === "live" && <Live />}
-        {selectedComponent === "statistics" && <Statistics />}
-        {selectedComponent === "geofence" && <GeoFence />}
-        {/* component */}
+        {selectedComponent === "devices" && <Devices />}
+        {selectedComponent === "geofence" && (
+          <GeofenceProvider>
+            {" "}
+            <Geofence />{" "}
+          </GeofenceProvider>
+        )}
+        {selectedComponent === "Assistant" && <Assistant />}
       </div>
     </div>
   );
 };
 
-export default Home;
+export default Application;

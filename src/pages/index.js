@@ -1,9 +1,9 @@
 import Login from './Login.jsx'
-import Dashboard from './Dashboard.jsx'
-import Home from './Home.jsx'
+import LandingPage from './Landing.jsx'
+import Application from './Application.jsx'
 
 export {
     Login,
-    Dashboard,
-    Home
+    LandingPage,
+    Application
 }
