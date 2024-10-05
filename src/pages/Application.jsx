@@ -8,6 +8,8 @@ import {
 } from "../components/app";
 import Sidebar from "../components/ui/Sidebar";
 import { GeofenceProvider } from "../contexts/GeofenceContext";
+import { DevicesProvider } from "../contexts/DevicesContext";
+import { ViolationsProvider } from "../contexts/DashboardContext";
 
 const Application = () => {
   const [selectedComponent, setSelectedComponent] = useState("dashboard");
@@ -24,10 +26,18 @@ const Application = () => {
           onSelectComponent={handleComponentChange}
         />
       </div>
-      <div className="component">
-        {selectedComponent === "dashboard" && <Dashboard />}
+      <div className="w-full h-full">
+        {selectedComponent === "dashboard" && (
+          <ViolationsProvider>
+            <Dashboard />
+          </ViolationsProvider>
+        )}
         {selectedComponent === "live" && <Live />}
-        {selectedComponent === "devices" && <Devices />}
+        {selectedComponent === "devices" && (
+          <DevicesProvider>
+            <Devices />
+          </DevicesProvider>
+        )}
         {selectedComponent === "geofence" && (
           <GeofenceProvider>
             {" "}

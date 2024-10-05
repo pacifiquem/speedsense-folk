@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import Geofence from "../ui/Geofence";
 import { useGeofence } from "../../contexts/GeofenceContext";
+import { X } from "lucide-react";
 
 Modal.setAppElement("#root");
 
@@ -21,7 +22,7 @@ const RoadsPage = () => {
   const handleAddRoadSegmentSelect = (roadId) => {
     setSelectedRoadId(roadId);
     setIsSegmentModalOpen(true);
-  }
+  };
 
   const toggleSegments = (roadId) => {
     setSelectedRoadId(selectedRoadId === roadId ? null : roadId);
@@ -36,18 +37,21 @@ const RoadsPage = () => {
   );
 
   return (
-    <div className="p-8">
+    <div className="w-full h-full p-6 mx-auto">
+      <h1 className="mb-6 text-3xl font-bold">Geofence Management</h1>
       {/* Search and Add New Road section */}
-      <div className="flex justify-between mb-6">
-        <input
-          type="text"
-          placeholder="Search roads..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-1/3 px-4 py-2 text-black bg-gray-300 rounded-lg"
-        />
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex gap-2">
+          <input
+            type="text"
+            placeholder="Search roads..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-64 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
         <button
-          className="px-4 py-2 font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700"
+          className="px-4 py-2 text-white bg-green-500 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
           onClick={() => setIsRoadModalOpen(true)}
         >
           Add New Road
@@ -55,83 +59,128 @@ const RoadsPage = () => {
       </div>
 
       {/* Roads Table */}
-      <div className="overflow-x-auto">
-        <table className="min-w-full text-white bg-gray-900 border border-gray-700">
-          <thead>
-            <tr className="text-lg bg-gray-800">
-              <th className="px-6 py-4">Road Name</th>
-              <th className="px-6 py-4">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredRoads.map((road) => (
-              <React.Fragment key={road.id}>
-                <tr className="bg-gray-800 border-b border-gray-700">
-                  <td className="px-6 py-4 text-lg">{road.name}</td>
-                  <td className="px-6 py-4">
-                    <button
-                      className="px-4 py-2 mr-2 text-white bg-green-600 rounded-lg hover:bg-green-700"
-                      onClick={() => handleAddRoadSegmentSelect(road.id)}
-                    >
-                      Add Segment
-                    </button>
-                    <button
-                      className="px-4 py-2 text-white bg-gray-600 rounded-lg hover:bg-gray-700"
-                      onClick={() => toggleSegments(road.id)}
-                    >
-                      {selectedRoadId === road.id
-                        ? "Hide Segments"
-                        : "View Segments"}
-                    </button>
-                  </td>
-                </tr>
+      <table className="min-w-full bg-white border border-gray-300">
+        <thead>
+          <tr className="bg-gray-100">
+            <th className="px-4 py-2 text-left border-b">No.</th>
+            <th className="px-4 py-2 text-left border-b">Road Name</th>
+            <th className="px-4 py-2 text-left border-b">
+              Average Speed Limit
+            </th>
+            <th className="px-4 py-2 text-left border-b">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredRoads.map((road) => (
+            <React.Fragment key={road.id}>
+              <tr className="hover:bg-gray-50">
+                <td className="px-4 py-2 border-b">{road.id}</td>
+                <td className="px-4 py-2 border-b">{road.name}</td>
+                <td className="px-4 py-2 border-b">
+                  {road.segments && road.segments.length > 0
+                    ? road.segments.reduce(
+                        (acc, segment) => acc + segment.speedLimit,
+                        0
+                      ) / road.segments.length
+                    : 0}{" "}
+                  KM/Hr
+                </td>
+                <td className="px-4 py-2 border-b">
+                  <button
+                    className="px-4 py-2 mr-2 text-white bg-green-500 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                    onClick={() => handleAddRoadSegmentSelect(road.id)}
+                  >
+                    Add Segment
+                  </button>
+                  <button
+                    className="px-4 py-2 text-white bg-gray-600 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+                    onClick={() => toggleSegments(road.id)}
+                  >
+                    {selectedRoadId === road.id
+                      ? "Hide Segments"
+                      : "View Segments"}
+                  </button>
+                </td>
+              </tr>
 
-                {/* Road Segments */}
-                {selectedRoadId === road.id && (
-                  <tr className="bg-gray-700">
-                    <td colSpan="2" className="px-6 py-4">
-                      <ul className="space-y-4">
-                        {road.segments.length > 0 ? (
+              {/* Road Segments Subtable */}
+              {selectedRoadId === road.id && (
+                <tr>
+                  <td colSpan="4" className="px-6 py-4 bg-gray-50">
+                    <table className="min-w-full bg-white border border-gray-300">
+                      <thead>
+                        <tr className="bg-gray-100">
+                          <th className="px-4 py-2 text-left border-b">
+                            Segment No.
+                          </th>
+                          <th className="px-4 py-2 text-left border-b">
+                            Segment Name
+                          </th>
+                          <th className="px-4 py-2 text-left border-b">
+                            Speed Limit (KM/H)
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {road.segments && road.segments.length > 0 ? (
                           road.segments.map((segment, index) => (
-                            <li
-                              key={index}
-                              className="px-4 py-2 bg-gray-800 rounded-lg"
-                            >
-                              Speed Limit: {segment.speedLimit} KM/H |
-                              Coordinates: {JSON.stringify(segment.coordinates)}
-                            </li>
+                            <tr key={index} className="hover:bg-gray-50">
+                              <td className="px-4 py-2 border-b">
+                                {index + 1}
+                              </td>
+                              <td className="px-4 py-2 border-b">
+                                {segment.name}
+                              </td>
+                              <td className="px-4 py-2 border-b">
+                                {segment.speedLimit} KM/Hr
+                              </td>
+                            </tr>
                           ))
                         ) : (
-                          <li className="px-4 py-2">
-                            No segments available for this road.
-                          </li>
+                          <tr>
+                            <td
+                              colSpan="3"
+                              className="px-4 py-2 text-center text-gray-500"
+                            >
+                              No segments available for this road.
+                            </td>
+                          </tr>
                         )}
-                      </ul>
-                    </td>
-                  </tr>
-                )}
-              </React.Fragment>
-            ))}
-          </tbody>
-        </table>
-      </div>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              )}
+            </React.Fragment>
+          ))}
+        </tbody>
+      </table>
 
       {/* Modal for Adding a New Road */}
       <Modal
         isOpen={isRoadModalOpen}
         onRequestClose={() => setIsRoadModalOpen(false)}
-        className="max-w-md p-6 mx-auto mt-10 text-white bg-gray-800 rounded-lg"
+        className="p-6 mx-auto mt-10 bg-white rounded-lg shadow-xl w-96"
+        overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
       >
-        <h2 className="mb-4 text-2xl">Add a New Road</h2>
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-xl font-bold">Add New Road</h2>
+          <button
+            onClick={() => setIsRoadModalOpen(false)}
+            className="text-gray-500 hover:text-gray-700"
+          >
+            <X className="w-6 h-6" />
+          </button>
+        </div>
         <input
           type="text"
           value={newRoadName}
           onChange={(e) => setNewRoadName(e.target.value)}
           placeholder="Enter road name"
-          className="w-full px-3 py-2 mb-4 text-black rounded-lg"
+          className="w-full px-3 py-2 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <button
-          className="px-4 py-2 font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700"
+          className="w-full px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           onClick={handleAddRoad}
         >
           Add Road
@@ -142,10 +191,11 @@ const RoadsPage = () => {
       <Modal
         isOpen={isSegmentModalOpen}
         onRequestClose={handleCloseSegmentModal}
-        className="w-full h-[90vh] max-w-5xl p-6 mx-auto mt-10 text-white bg-gray-900"
+        className="w-full h-[90vh] max-w-5xl p-6 mx-auto mt-10 bg-gray-900 text-white rounded-lg shadow-xl"
+        overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
       >
         <Geofence
-          road={roads.filter((road) => road.id == selectedRoadId)[0]}
+          road={roads.find((road) => road.id === selectedRoadId)}
           location="Rwanda, Kicukiro, Nyarugunga"
           onClose={handleCloseSegmentModal}
         />

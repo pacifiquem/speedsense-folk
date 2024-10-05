@@ -11,6 +11,7 @@ import showToast from "../../utils/errorToasts.util";
 
 const Geofence = ({ road, location, onClose }) => {
   const [speedLimit, setSpeedLimit] = useState("");
+  const [roadSegmentName, setRoadSegmentName] = useState("");
   const [initialPosition, setInitialPosition] = useState([
     rwandaCoordinates.latitude,
     rwandaCoordinates.longitude,
@@ -57,8 +58,11 @@ const Geofence = ({ road, location, onClose }) => {
     } else if (!speedLimit) {
       showToast("Please set a speed limit.", "error");
       return;
+    } else if (!roadSegmentName) {
+      showToast("Please set a name for the road segment.", "error");
+      return;
     }
-    addRoadSegment(selectedRoad, speedLimit, road.id);
+    addRoadSegment(selectedRoad, speedLimit, road.id, roadSegmentName);
     onClose();
     showToast("Segment added successfully", "success");
   };
@@ -102,6 +106,18 @@ const Geofence = ({ road, location, onClose }) => {
             />
           </FeatureGroup>
         </MapContainer>
+      </div>
+
+      {/* name input */}
+      <div className="flex flex-col items-center justify-center mt-6 space-y-4 md:flex-row md:space-y-0 md:space-x-4">
+        <label className="text-lg">Name:</label>
+        <input
+          type="text"
+          value={roadSegmentName}
+          onChange={(e) => setRoadSegmentName(e.target.value)}
+          min="0"
+          className="w-32 p-2 text-center text-white bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500"
+        />
       </div>
 
       {/* Speed limit input */}

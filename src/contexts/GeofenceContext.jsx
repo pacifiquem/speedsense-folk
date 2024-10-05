@@ -32,12 +32,13 @@ const GeofenceProvider = ({ children }) => {
   };
 
   // Add a new road segment
-  const addRoadSegment = async (coordinates, speedLimit, roadId) => {
+  const addRoadSegment = async (coordinates, speedLimit, roadId, name) => {
     try {
       const response = await axios.post("geofence/road_segments", {
         coordinates,
         speedLimit,
         roadId,
+        name,
       });
       const updatedRoads = roads.map((road) =>
         road.id === roadId
