@@ -27,7 +27,7 @@ const Geofence = ({ road, location, onClose }) => {
           `https://nominatim.openstreetmap.org/search`,
           {
             params: {
-              q: location || "Rwanda",
+              q: road.name,
               format: "json",
               limit: 1,
             },
@@ -36,7 +36,10 @@ const Geofence = ({ road, location, onClose }) => {
 
         if (response.data.length) {
           const { lat, lon } = response.data[0];
-          setInitialPosition([parseFloat(lat), parseFloat(lon)]);
+          setInitialPosition([
+            parseFloat(-1.89667105),
+            parseFloat(30.03693855),
+          ]);
         }
       } catch (error) {
         console.error("Error fetching location:", error);
@@ -86,10 +89,10 @@ const Geofence = ({ road, location, onClose }) => {
       <div className="overflow-hidden rounded-lg shadow-md">
         <MapContainer
           center={initialPosition}
-          zoom={12}
+          zoom={10}
           className="w-full h-80"
         >
-          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          <TileLayer url={`https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}&ll=-1.89667105,30.03693855&key=AIzaSyBFOHm9uRT4PWyKqrUzRAAi7Ol7xfzs6U4&`} />
 
           {/* Draw Feature Group */}
           <FeatureGroup>

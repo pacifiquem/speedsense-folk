@@ -73,9 +73,9 @@ export default function Dashboard() {
             <thead>
               <tr className="text-sm font-medium text-left text-gray-500">
                 <th className="pb-3">Time</th>
-                <th className="pb-3">Device ID</th>
+                <th className="pb-3">Device Owner</th>
                 <th className="pb-3">Violation Type</th>
-                <th className="pb-3">Details</th>
+                <th className="pb-3">Road Segment</th>
                 <th className="pb-3">Action</th>
               </tr>
             </thead>
@@ -86,9 +86,11 @@ export default function Dashboard() {
                     <td className="py-3">
                       {new Date(violation.time).toLocaleString()}
                     </td>
-                    <td className="py-3">{violation.deviceId}</td>
-                    <td className="py-3">{violation.type}</td>
-                    <td className="py-3">{violation.details}</td>
+                    <td className="py-3">{violation.device.owner}</td>
+                    <td className="py-3">{violation.violationType}</td>
+                    <td className="py-3">
+                      {violation.roadSegment.name}
+                    </td>
                     <td className="py-3">
                       <button className="px-3 py-1 text-sm text-gray-700 transition-colors bg-gray-200 rounded hover:bg-gray-300">
                         View

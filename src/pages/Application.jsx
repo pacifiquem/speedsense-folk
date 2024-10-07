@@ -32,7 +32,11 @@ const Application = () => {
             <Dashboard />
           </ViolationsProvider>
         )}
-        {selectedComponent === "live" && <Live />}
+        {selectedComponent === "live" && (
+          <ViolationsProvider>
+            <Live />
+          </ViolationsProvider>
+        )}
         {selectedComponent === "devices" && (
           <DevicesProvider>
             <Devices />

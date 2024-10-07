@@ -7,6 +7,8 @@ import {
   MapIcon,
   VideoIcon,
   GaugeIcon,
+  ChartAreaIcon,
+  MessageCircle,
 } from "lucide-react";
 
 const Sidebar = ({ selectedComponent, onSelectComponent }) => {
@@ -57,6 +59,15 @@ const Sidebar = ({ selectedComponent, onSelectComponent }) => {
             >
               <VideoIcon className="w-5 h-5" />
               <span>Live</span>
+            </li>
+            <li
+              className={`flex items-center space-x-2 cursor-pointer hover:text-gray-300 ${
+                selectedComponent === "assistant" ? "text-gray-300" : ""
+              }`}
+              onClick={() => onSelectComponent("assistant")}
+            >
+              <MessageCircle className="w-5 h-5" />
+              <span>Assistant</span>
             </li>
           </ul>
         </div>
