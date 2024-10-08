@@ -116,7 +116,7 @@ export default function Dashboard() {
                     <td className="py-3">
                       <button
                         className="px-3 py-1 text-sm text-gray-700 transition-colors bg-gray-200 rounded hover:bg-gray-300"
-                        onClick={navigate("/live")}
+                        onClick={() => navigate("/live")}
                       >
                         View
                       </button>
