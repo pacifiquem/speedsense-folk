@@ -84,7 +84,6 @@ export default function ViolationMap() {
       >
         <TileLayer
           url={`https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}&ll=-1.89667105,30.03693855&key=AIzaSyBFOHm9uRT4PWyKqrUzRAAi7Ol7xfzs6U4&`}
-          attribution="&copy; OpenStreetMap contributors"
         />
         {filteredViolations.map((violation) => (
           <Marker
