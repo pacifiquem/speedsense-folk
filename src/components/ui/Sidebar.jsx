@@ -7,8 +7,6 @@ import {
   MapIcon,
   VideoIcon,
   GaugeIcon,
-  ChartAreaIcon,
-  MessageCircle,
 } from "lucide-react";
 
 const Sidebar = ({ selectedComponent, onSelectComponent }) => {

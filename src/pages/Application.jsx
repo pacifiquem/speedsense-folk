@@ -28,7 +28,7 @@ const Application = () => {
       <div className="w-full h-full">
         {selectedComponent === "dashboard" && (
           <ViolationsProvider>
-            <Dashboard />
+            <Dashboard onSelectComponent={setSelectedComponent}/>
           </ViolationsProvider>
         )}
         {selectedComponent === "live" && (
