@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "../components/ui/Button";
 import { Input } from "../components/ui/Input";
 import { Card, CardContent } from "../components/ui/Card";
@@ -9,7 +10,9 @@ import {
   CarIcon,
   CpuIcon,
   BellIcon,
-  ShieldCheckIcon
+  ShieldCheckIcon,
+  MenuIcon,
+  XIcon,
 } from "lucide-react";
 
 import { useAuth } from "../contexts/AuthContext";
@@ -18,10 +21,15 @@ import { useNavigate } from "react-router-dom";
 export default function LandingPage() {
   const { user } = useAuth();
   const navigate = useNavigate();
-  
-  {/* Navigate to the dashboard if the user is logged in */}
+
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   if (user) navigate("/app");
-  
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <div className="min-h-screen text-white bg-black">
       <header className="border-b border-gray-800">
@@ -30,8 +38,25 @@ export default function LandingPage() {
             <GaugeIcon className="w-8 h-8" />
             <span className="text-xl font-bold">SpeedSense</span>
           </div>
-          <nav>
-            <ul className="flex mr-12 space-x-12">
+          {/* Hamburger Menu Icon for Mobile */}
+          <button
+            className="text-white md:hidden"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle navigation"
+          >
+            {isMobileMenuOpen ? (
+              <XIcon className="w-8 h-8" />
+            ) : (
+              <MenuIcon className="w-8 h-8" />
+            )}
+          </button>
+          {/* Navigation links */}
+          <nav
+            className={`md:flex space-x-12 ${
+              isMobileMenuOpen ? "block" : "hidden"
+            } md:block`}
+          >
+            <ul className="flex flex-col mr-12 space-y-4 md:flex-row md:space-y-0 md:space-x-12">
               <li>
                 <a href="#features" className="hover:text-gray-300">
                   Features
@@ -58,7 +83,12 @@ export default function LandingPage() {
           <p className="mb-8 text-xl">
             Enhance road safety with cutting-edge technology
           </p>
-          <Button className="w-48 text-black bg-white hover:bg-gray-200" onClick={() => {navigate("/login")}}>
+          <Button
+            className="w-48 text-black bg-white hover:bg-gray-200"
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
             Get Started
           </Button>
         </section>
@@ -103,8 +133,8 @@ export default function LandingPage() {
             <h2 className="mb-12 text-3xl font-bold text-center">
               How It Works
             </h2>
-            <div className="flex justify-around">
-              <Card className="bg-gray-800 border-gray-700  w-[20%]">
+            <div className="flex flex-wrap justify-around">
+              <Card className="bg-gray-800 border-gray-700 w-full md:w-[20%] mb-4 md:mb-0">
                 <CardContent className="flex flex-col items-center p-6 text-center">
                   <CarIcon className="w-12 h-12 mb-4" />
                   <h3 className="mb-2 text-lg font-semibold">Monitoring</h3>
@@ -113,7 +143,7 @@ export default function LandingPage() {
                   </p>
                 </CardContent>
               </Card>
-              <Card className="bg-gray-800 border-gray-700  w-[20%]">
+              <Card className="bg-gray-800 border-gray-700 w-full md:w-[20%] mb-4 md:mb-0">
                 <CardContent className="flex flex-col items-center p-6 text-center">
                   <CpuIcon className="w-12 h-12 mb-4" />
                   <h3 className="mb-2 text-lg font-semibold">Processing</h3>
@@ -122,7 +152,7 @@ export default function LandingPage() {
                   </p>
                 </CardContent>
               </Card>
-              <Card className="bg-gray-800 border-gray-700 w-[20%]">
+              <Card className="bg-gray-800 border-gray-700 w-full md:w-[20%] mb-4 md:mb-0">
                 <CardContent className="flex flex-col items-center p-6 text-center">
                   <BellIcon className="w-12 h-12 mb-4" />
                   <h3 className="mb-2 text-lg font-semibold">Alerting</h3>
@@ -131,7 +161,7 @@ export default function LandingPage() {
                   </p>
                 </CardContent>
               </Card>
-              <Card className="bg-gray-800 border-gray-700  w-[20%]">
+              <Card className="bg-gray-800 border-gray-700 w-full md:w-[20%]">
                 <CardContent className="flex flex-col items-center p-6 text-center">
                   <ShieldCheckIcon className="w-12 h-12 mb-4" />
                   <h3 className="mb-2 text-lg font-semibold">Action</h3>

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { AlertTriangle, Gauge, Wifi, WifiOff } from "lucide-react";
 import { useViolations } from "../../contexts/DashboardContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
   const { violations, dashboardStats, loading } = useViolations();
   const [currentPage, setCurrentPage] = useState(1);
   const recordsPerPage = 5;
+  const navigate = useNavigate();
 
   if (loading) {
     return <div className="min-h-screen p-8">Loading...</div>;
@@ -112,7 +114,10 @@ export default function Dashboard() {
                     <td className="py-3">{violation.violationType}</td>
                     <td className="py-3">{violation.roadSegment.name}</td>
                     <td className="py-3">
-                      <button className="px-3 py-1 text-sm text-gray-700 transition-colors bg-gray-200 rounded hover:bg-gray-300">
+                      <button
+                        className="px-3 py-1 text-sm text-gray-700 transition-colors bg-gray-200 rounded hover:bg-gray-300"
+                        onClick={navigate("/live")}
+                      >
                         View
                       </button>
                     </td>

@@ -78,7 +78,7 @@ export default function ViolationMap() {
 
       {/* Map */}
       <MapContainer
-        center={[0.3476, 32.5825]} // Sample coordinates for demonstration
+        center={[1.6109, 29.4999]} // Sample coordinates for demonstration
         zoom={13}
         className="w-full h-[500px] mb-8"
       >
