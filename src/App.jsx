@@ -3,7 +3,7 @@ import "./App.css";
 import 'react-toastify/dist/ReactToastify.css';
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { LandingPage, Login, Application } from "./pages";
+import { LandingPage, Login, Application, Signup } from "./pages";
 
 const App = () => {
   return (
@@ -11,6 +11,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/app" element={<Application />} />
       </Routes>
 

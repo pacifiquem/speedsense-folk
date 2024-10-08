@@ -13,6 +13,10 @@ export default function DeviceManagement() {
   });
   const [isAddDeviceOpen, setIsAddDeviceOpen] = useState(false);
 
+  // Pagination states
+  const [currentPage, setCurrentPage] = useState(1);
+  const devicesPerPage = 5;
+
   const filteredDevices = devices.filter(
     (device) =>
       device.owner.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -24,6 +28,8 @@ export default function DeviceManagement() {
         .includes(searchTerm.toLowerCase())
   );
 
+  const totalPages = Math.ceil(filteredDevices.length / devicesPerPage);
+
   const handleAddDevice = () => {
     addDevice(newDevice);
     setNewDevice({
@@ -33,6 +39,26 @@ export default function DeviceManagement() {
     });
     setIsAddDeviceOpen(false);
   };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  // Get current devices for pagination
+  const indexOfLastDevice = currentPage * devicesPerPage;
+  const indexOfFirstDevice = indexOfLastDevice - devicesPerPage;
+  const currentDevices = filteredDevices.slice(
+    indexOfFirstDevice,
+    indexOfLastDevice
+  );
 
   return (
     <div className="min-h-screen p-8 text-gray-900 bg-gray-100">
@@ -66,8 +92,8 @@ export default function DeviceManagement() {
             </tr>
           </thead>
           <tbody>
-            {filteredDevices.length > 0 ? (
-              filteredDevices.map((device) => (
+            {currentDevices.length > 0 ? (
+              currentDevices.map((device) => (
                 <tr
                   key={device.id}
                   className="border-t border-gray-200 hover:bg-gray-50"
@@ -92,6 +118,33 @@ export default function DeviceManagement() {
             )}
           </tbody>
         </table>
+      </div>
+
+      {/* Pagination Controls */}
+      <div className="flex items-center justify-between mt-4">
+        <button
+          onClick={handlePreviousPage}
+          disabled={currentPage === 1}
+          className={`px-4 py-2 rounded-md text-white ${
+            currentPage === 1 ? "bg-gray-300" : "bg-blue-500 hover:bg-blue-600"
+          }`}
+        >
+          Previous
+        </button>
+        <span className="text-sm text-gray-700">
+          {currentPage} of {totalPages}
+        </span>
+        <button
+          onClick={handleNextPage}
+          disabled={currentPage === totalPages}
+          className={`px-4 py-2 rounded-md text-white ${
+            currentPage === totalPages
+              ? "bg-gray-300"
+              : "bg-blue-500 hover:bg-blue-600"
+          }`}
+        >
+          Next
+        </button>
       </div>
 
       {isAddDeviceOpen && (

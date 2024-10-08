@@ -13,7 +13,7 @@ export default function ViolationMap() {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const socketInstance = io("http://localhost:5000");
+    const socketInstance = io("https://speedsense.onrender.com");
     setSocket(socketInstance);
 
     socketInstance.on("newViolation", (violation) => {
@@ -83,7 +83,7 @@ export default function ViolationMap() {
         className="w-full h-[500px] mb-8"
       >
         <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          url={`https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}&ll=-1.89667105,30.03693855&key=AIzaSyBFOHm9uRT4PWyKqrUzRAAi7Ol7xfzs6U4&`}
           attribution="&copy; OpenStreetMap contributors"
         />
         {filteredViolations.map((violation) => (

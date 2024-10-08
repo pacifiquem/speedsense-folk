@@ -3,8 +3,7 @@ import {
   Dashboard,
   Live,
   Geofence,
-  Devices,
-  Assistant,
+  Devices
 } from "../components/app";
 import Sidebar from "../components/ui/Sidebar";
 import { GeofenceProvider } from "../contexts/GeofenceContext";
@@ -48,7 +47,6 @@ const Application = () => {
             <Geofence />{" "}
           </GeofenceProvider>
         )}
-        {selectedComponent === "Assistant" && <Assistant />}
       </div>
     </div>
   );

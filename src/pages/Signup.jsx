@@ -3,17 +3,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { GaugeIcon } from "lucide-react";
 import { useAuth } from "../contexts/AuthContext";
 
-export default function Login() {
+export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login, isLoading, user } = useAuth();
+  const { signup, isLoading, user } = useAuth();
   const navigate = useNavigate();
 
   if (user) navigate("/app");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await login(email, password);
+    await signup(email, password);
   };
 
   return (
@@ -58,16 +58,16 @@ export default function Login() {
             className="w-full py-3 text-lg font-semibold text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:ring focus:ring-blue-300 focus:ring-opacity-50 disabled:opacity-50"
             disabled={isLoading}
           >
-            {isLoading ? "Signing in..." : "Sign in"}
+            {isLoading ? "Signing up..." : "Sign up"}
           </button>
           <div className="text-center">
             <p className="text-gray-500">
-              New to SpeedSense?{" "}
+              Already Have an account?{" "}
               <Link
-                to="/signup"
+                to="/login"
                 className="text-blue-500 underline hover:text-blue-600"
               >
-                Sign Up
+                Login
               </Link>
             </p>
           </div>
